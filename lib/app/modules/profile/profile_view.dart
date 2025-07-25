@@ -136,15 +136,64 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                     SizedBox(height: 12),
                     _profileCard([
-                      _profileTile(
-                        Icons.notifications_none,
-                        'Notifications',
-                        '',
-                        trailing: Icon(
-                          Icons.arrow_forward_ios,
-                          size: 18,
-                          color: Color(0xFF8A94A6),
+                      GestureDetector(
+                        onTap: () => controller.showNotifDropdown.value =
+                            !controller.showNotifDropdown.value,
+                        child: _profileTile(
+                          Icons.notifications_none,
+                          'Notifications',
+                          '',
+                          trailing: Obx(
+                            () => Icon(
+                              controller.showNotifDropdown.value
+                                  ? Icons.keyboard_arrow_up
+                                  : Icons.arrow_forward_ios,
+                              size: 18,
+                              color: Color(0xFF8A94A6),
+                            ),
+                          ),
                         ),
+                      ),
+                      Obx(
+                        () => controller.showNotifDropdown.value
+                            ? Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16.0,
+                                  vertical: 8.0,
+                                ),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black12,
+                                        blurRadius: 4,
+                                        offset: Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      _notifSwitchTile(
+                                        'Transaction Alerts',
+                                        'Receive alerts for every transaction',
+                                        controller.transactionAlerts,
+                                      ),
+                                      Divider(
+                                        height: 1,
+                                        color: Color(0xFFF0F0F0),
+                                      ),
+                                      _notifSwitchTile(
+                                        'Budget Reminders',
+                                        'Get reminders when you’re nearing your budget',
+                                        controller.budgetReminders,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            : SizedBox.shrink(),
                       ),
                       _profileTile(
                         Icons.language,
@@ -258,5 +307,30 @@ Widget _profileTile(
         : null,
     trailing: trailing,
     onTap: () {},
+  );
+}
+
+Widget _notifSwitchTile(String title, String subtitle, RxBool value) {
+  return Obx(
+    () => ListTile(
+      contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+      title: Text(
+        title,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+          color: Color(0xFF181F2B),
+        ),
+      ),
+      subtitle: Text(
+        subtitle,
+        style: TextStyle(fontSize: 14, color: Color(0xFF8A94A6)),
+      ),
+      trailing: Switch(
+        value: value.value,
+        onChanged: (val) => value.value = val,
+        activeColor: Color(0xFF2563EB),
+      ),
+    ),
   );
 }

@@ -5,4 +5,7 @@ class ProfileController extends GetxController {
   final email = 'sophia.carter@email.com'.obs;
   final avatar = 'assets/avatar_woman.png'.obs;
   final isDarkMode = false.obs;
+  final showNotifDropdown = false.obs;
+  final transactionAlerts = false.obs;
+  final budgetReminders = false.obs;
 }

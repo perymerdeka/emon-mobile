@@ -32,12 +32,15 @@ class HomeView extends GetView<HomeController> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
-            child: CircleAvatar(
-              backgroundColor: const Color(0xFFF2F6FA),
-              child: Icon(
-                Icons.settings,
-                color: const Color(0xFF181F2B),
-                size: size.width < 400 ? 20 : 24,
+            child: GestureDetector(
+              onTap: () => Get.toNamed(Routes.NOTIFICATIONS),
+              child: CircleAvatar(
+                backgroundColor: const Color(0xFFF2F6FA),
+                child: Icon(
+                  Icons.notifications_none,
+                  color: const Color(0xFF181F2B),
+                  size: size.width < 400 ? 20 : 24,
+                ),
               ),
             ),
           ),
@@ -352,7 +355,9 @@ class HomeView extends GetView<HomeController> {
                         const SizedBox(width: 16),
                         Expanded(
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.toNamed(Routes.ALL_FEATURES);
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFFE3F0FF),
                               padding: EdgeInsets.symmetric(

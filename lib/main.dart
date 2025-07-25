@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final ProfileController profileController = Get.put(ProfileController());
     return GetMaterialApp(
-      title: "Application",
+      title: "Emon",
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: const Color(0xFFF7FAFF),
         appBarTheme: const AppBarTheme(
@@ -44,9 +44,7 @@ class MyApp extends StatelessWidget {
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       builder: (context, child) {
-        return Obx(
-          () => MediaQuery(data: MediaQuery.of(context), child: child!),
-        );
+        return MediaQuery(data: MediaQuery.of(context), child: child!);
       },
     );
   }

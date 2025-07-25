@@ -11,6 +11,10 @@ abstract class Routes {
   static const CATEGORY = _Paths.CATEGORY;
   static const REPORTS = _Paths.REPORTS;
   static const PROFILE = _Paths.PROFILE;
+  static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
+  static const NOTIFICATIONS = _Paths.NOTIFICATIONS;
+  static const ALL_FEATURES = _Paths.ALL_FEATURES;
+  static const AI_CONSULTATION = _Paths.AI_CONSULTATION;
 }
 
 abstract class _Paths {
@@ -23,4 +27,8 @@ abstract class _Paths {
   static const CATEGORY = '/category';
   static const REPORTS = '/reports';
   static const PROFILE = '/profile';
+  static const FORGOT_PASSWORD = '/forgot-password';
+  static const NOTIFICATIONS = '/notifications';
+  static const ALL_FEATURES = '/all-features';
+  static const AI_CONSULTATION = '/ai-consultation';
 }

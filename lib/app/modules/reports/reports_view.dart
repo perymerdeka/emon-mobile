@@ -42,14 +42,12 @@ class ReportsView extends GetView<ReportsController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Obx(
-                      () => Row(
-                        children: [
-                          _tabButton('Monthly', 0, tabIndex),
-                          _tabButton('Yearly', 1, tabIndex),
-                          _tabButton('Custom', 2, tabIndex),
-                        ],
-                      ),
+                    Row(
+                      children: [
+                        _tabButton('Monthly', 0, tabIndex),
+                        _tabButton('Yearly', 1, tabIndex),
+                        _tabButton('Custom', 2, tabIndex),
+                      ],
                     ),
                     SizedBox(height: 18),
                     _incomeExpenseCard(context),

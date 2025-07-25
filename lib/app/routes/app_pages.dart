@@ -13,6 +13,10 @@ import 'package:emon_mobile/app/modules/reports/reports_binding.dart';
 import 'package:emon_mobile/app/modules/reports/reports_view.dart';
 import 'package:emon_mobile/app/modules/profile/profile_binding.dart';
 import 'package:emon_mobile/app/modules/profile/profile_view.dart';
+import 'package:emon_mobile/app/modules/login/forgot_password_view.dart';
+import 'package:emon_mobile/app/modules/notifications/notifications_view.dart';
+import 'package:emon_mobile/app/modules/all_features/all_features_view.dart';
+import 'package:emon_mobile/app/modules/ai_consultation/ai_consultation_view.dart';
 
 import '../modules/home/home_binding.dart';
 import '../modules/home/home_view.dart';
@@ -22,7 +26,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.PROFILE;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(
@@ -61,5 +65,9 @@ class AppPages {
       page: () => ProfileView(),
       binding: ProfileBinding(),
     ),
+    GetPage(name: _Paths.FORGOT_PASSWORD, page: () => ForgotPasswordView()),
+    GetPage(name: _Paths.NOTIFICATIONS, page: () => NotificationsView()),
+    GetPage(name: _Paths.ALL_FEATURES, page: () => AllFeaturesView()),
+    GetPage(name: _Paths.AI_CONSULTATION, page: () => AIConsultationView()),
   ];
 }
