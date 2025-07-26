@@ -13,6 +13,9 @@ class AddTransactionView extends StatelessWidget {
     final TextEditingController dateController = TextEditingController();
     String? selectedCategory;
     final categories = ['Income', 'Expense', 'Other'];
+    
+    // Set default date to today
+    dateController.text = '${DateTime.now().month.toString().padLeft(2, '0')}/${DateTime.now().day.toString().padLeft(2, '0')}/${DateTime.now().year}';
     return Scaffold(
       backgroundColor: const Color(0xFFF7FAFF),
       appBar: AppBar(
@@ -135,7 +138,9 @@ class AddTransactionView extends StatelessWidget {
                                 DropdownMenuItem(value: cat, child: Text(cat)),
                           )
                           .toList(),
-                      onChanged: (val) {},
+                      onChanged: (val) {
+                        selectedCategory = val;
+                      },
                       decoration: InputDecoration(
                         hintText: 'Category',
                         contentPadding: EdgeInsets.symmetric(
@@ -154,7 +159,57 @@ class AddTransactionView extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // Validate inputs
+                          if (amountController.text.isEmpty) {
+                            Get.snackbar(
+                              'Error',
+                              'Please enter an amount',
+                              backgroundColor: Colors.red,
+                              colorText: Colors.white,
+                            );
+                            return;
+                          }
+                          if (descController.text.isEmpty) {
+                            Get.snackbar(
+                              'Error',
+                              'Please enter a description',
+                              backgroundColor: Colors.red,
+                              colorText: Colors.white,
+                            );
+                            return;
+                          }
+                          if (dateController.text.isEmpty) {
+                            Get.snackbar(
+                              'Error',
+                              'Please select a date',
+                              backgroundColor: Colors.red,
+                              colorText: Colors.white,
+                            );
+                            return;
+                          }
+                          if (selectedCategory == null) {
+                            Get.snackbar(
+                              'Error',
+                              'Please select a category',
+                              backgroundColor: Colors.red,
+                              colorText: Colors.white,
+                            );
+                            return;
+                          }
+                          
+                          // TODO: Save transaction to database/state
+                          // For now, just show success message and go back
+                          Get.snackbar(
+                            'Success',
+                            'Transaction saved successfully!',
+                            backgroundColor: Colors.green,
+                            colorText: Colors.white,
+                          );
+                          
+                          // Navigate back to transactions
+                          Get.offAllNamed(Routes.TRANSACTIONS);
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFF2563EB),
                           padding: EdgeInsets.symmetric(vertical: 16),

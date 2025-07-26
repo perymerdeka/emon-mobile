@@ -52,13 +52,16 @@ class ProfileView extends GetView<ProfileController> {
                         Positioned(
                           bottom: 6,
                           right: 6,
-                          child: CircleAvatar(
-                            radius: 18,
-                            backgroundColor: Color(0xFFE3F0FF),
-                            child: Icon(
-                              Icons.edit,
-                              color: Color(0xFF8A94A6),
-                              size: 20,
+                          child: GestureDetector(
+                            onTap: () => _showEditAvatarDialog(),
+                            child: CircleAvatar(
+                              radius: 18,
+                              backgroundColor: Color(0xFFE3F0FF),
+                              child: Icon(
+                                Icons.edit,
+                                color: Color(0xFF8A94A6),
+                                size: 20,
+                              ),
                             ),
                           ),
                         ),
@@ -306,7 +309,159 @@ Widget _profileTile(
           )
         : null,
     trailing: trailing,
-    onTap: () {},
+    onTap: () {
+      // Handle different profile tile actions
+      if (title == 'Password') {
+        _showChangePasswordDialog();
+      } else if (title == 'Language') {
+        _showLanguageDialog();
+      }
+    },
+  );
+}
+
+void _showEditAvatarDialog() {
+  Get.bottomSheet(
+    Container(
+      padding: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Change Profile Picture',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF181F2B),
+            ),
+          ),
+          SizedBox(height: 20),
+          ListTile(
+            leading: Icon(Icons.camera_alt, color: Color(0xFF2563EB)),
+            title: Text('Take Photo'),
+            onTap: () {
+              Get.back();
+              Get.snackbar(
+                'Info',
+                'Camera functionality will be implemented here',
+                backgroundColor: Color(0xFF2563EB),
+                colorText: Colors.white,
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.photo_library, color: Color(0xFF2563EB)),
+            title: Text('Choose from Gallery'),
+            onTap: () {
+              Get.back();
+              Get.snackbar(
+                'Info',
+                'Gallery functionality will be implemented here',
+                backgroundColor: Color(0xFF2563EB),
+                colorText: Colors.white,
+              );
+            },
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+void _showChangePasswordDialog() {
+  Get.dialog(
+    AlertDialog(
+      title: Text('Change Password'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              labelText: 'Current Password',
+              border: OutlineInputBorder(),
+            ),
+          ),
+          SizedBox(height: 16),
+          TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              labelText: 'New Password',
+              border: OutlineInputBorder(),
+            ),
+          ),
+          SizedBox(height: 16),
+          TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              labelText: 'Confirm New Password',
+              border: OutlineInputBorder(),
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Get.back(),
+          child: Text('Cancel'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            // TODO: Implement password change functionality
+            Get.back();
+            Get.snackbar(
+              'Success',
+              'Password changed successfully!',
+              backgroundColor: Colors.green,
+              colorText: Colors.white,
+            );
+          },
+          child: Text('Change'),
+        ),
+      ],
+    ),
+  );
+}
+
+void _showLanguageDialog() {
+  Get.dialog(
+    AlertDialog(
+      title: Text('Select Language'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ListTile(
+            title: Text('English'),
+            trailing: Icon(Icons.check, color: Color(0xFF2563EB)),
+            onTap: () {
+              Get.back();
+              Get.snackbar(
+                'Info',
+                'Language changed to English',
+                backgroundColor: Color(0xFF2563EB),
+                colorText: Colors.white,
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Indonesian'),
+            onTap: () {
+              Get.back();
+              Get.snackbar(
+                'Info',
+                'Language changed to Indonesian',
+                backgroundColor: Color(0xFF2563EB),
+                colorText: Colors.white,
+              );
+            },
+          ),
+        ],
+      ),
+    ),
   );
 }
 

@@ -57,7 +57,9 @@ class ReportsView extends GetView<ReportsController> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          _showExportOptions();
+                        },
                         icon: Icon(Icons.ios_share, color: Colors.white),
                         label: Text(
                           'Export & Share',
@@ -377,4 +379,69 @@ class _DonutChartPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+void _showExportOptions() {
+  Get.bottomSheet(
+    Container(
+      padding: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Export & Share',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF181F2B),
+            ),
+          ),
+          SizedBox(height: 20),
+          ListTile(
+            leading: Icon(Icons.picture_as_pdf, color: Color(0xFF6366F1)),
+            title: Text('Export as PDF'),
+            onTap: () {
+              Get.back();
+              Get.snackbar(
+                'Info',
+                'PDF export functionality will be implemented here',
+                backgroundColor: Color(0xFF6366F1),
+                colorText: Colors.white,
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.table_chart, color: Color(0xFF6366F1)),
+            title: Text('Export as Excel'),
+            onTap: () {
+              Get.back();
+              Get.snackbar(
+                'Info',
+                'Excel export functionality will be implemented here',
+                backgroundColor: Color(0xFF6366F1),
+                colorText: Colors.white,
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.share, color: Color(0xFF6366F1)),
+            title: Text('Share Report'),
+            onTap: () {
+              Get.back();
+              Get.snackbar(
+                'Info',
+                'Share functionality will be implemented here',
+                backgroundColor: Color(0xFF6366F1),
+                colorText: Colors.white,
+              );
+            },
+          ),
+        ],
+      ),
+    ),
+  );
 }

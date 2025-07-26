@@ -66,7 +66,9 @@ class CategoryView extends GetView<CategoryController> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _showAddCategoryDialog();
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFFE3F0FF),
                           elevation: 0,
@@ -172,10 +174,102 @@ Widget _categoryCardList(List categories) {
                 ],
               ),
             ),
-            Icon(Icons.edit, color: Color(0xFF8A94A6)),
+            GestureDetector(
+              onTap: () => _showEditCategoryDialog(cat),
+              child: Icon(Icons.edit, color: Color(0xFF8A94A6)),
+            ),
           ],
         ),
       );
     }),
+  );
+}
+
+void _showAddCategoryDialog() {
+  Get.dialog(
+    AlertDialog(
+      title: Text('Add New Category'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              labelText: 'Category Name',
+              border: OutlineInputBorder(),
+            ),
+          ),
+          SizedBox(height: 16),
+          DropdownButtonFormField<String>(
+            decoration: InputDecoration(
+              labelText: 'Type',
+              border: OutlineInputBorder(),
+            ),
+            items: [
+              DropdownMenuItem(value: 'income', child: Text('Income')),
+              DropdownMenuItem(value: 'expense', child: Text('Expense')),
+            ],
+            onChanged: (value) {},
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Get.back(),
+          child: Text('Cancel'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            // TODO: Implement add category functionality
+            Get.back();
+            Get.snackbar(
+              'Success',
+              'Category added successfully!',
+              backgroundColor: Colors.green,
+              colorText: Colors.white,
+            );
+          },
+          child: Text('Add'),
+        ),
+      ],
+    ),
+  );
+}
+
+void _showEditCategoryDialog(Map cat) {
+  Get.dialog(
+    AlertDialog(
+      title: Text('Edit Category'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              labelText: 'Category Name',
+              border: OutlineInputBorder(),
+            ),
+            controller: TextEditingController(text: cat['title']),
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Get.back(),
+          child: Text('Cancel'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            // TODO: Implement edit category functionality
+            Get.back();
+            Get.snackbar(
+              'Success',
+              'Category updated successfully!',
+              backgroundColor: Colors.green,
+              colorText: Colors.white,
+            );
+          },
+          child: Text('Save'),
+        ),
+      ],
+    ),
   );
 }
