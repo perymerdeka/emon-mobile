@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:emon_mobile/app/routes/app_pages.dart';
 
 class AccountsView extends StatelessWidget {
   @override
@@ -275,9 +274,9 @@ Widget _quickActionButton(
     child: Container(
       padding: EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Column(
         children: [

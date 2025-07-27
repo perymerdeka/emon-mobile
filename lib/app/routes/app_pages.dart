@@ -17,12 +17,19 @@ import 'package:emon_mobile/app/modules/login/forgot_password_view.dart';
 import 'package:emon_mobile/app/modules/notifications/notifications_view.dart';
 import 'package:emon_mobile/app/modules/all_features/all_features_view.dart';
 import 'package:emon_mobile/app/modules/ai_consultation/ai_consultation_view.dart';
+import 'package:emon_mobile/app/modules/invoices/invoices_binding.dart';
 import 'package:emon_mobile/app/modules/invoices/invoices_view.dart';
+import 'package:emon_mobile/app/modules/bills/bills_binding.dart';
 import 'package:emon_mobile/app/modules/bills/bills_view.dart';
+import 'package:emon_mobile/app/modules/budgets/budgets_binding.dart';
 import 'package:emon_mobile/app/modules/budgets/budgets_view.dart';
+import 'package:emon_mobile/app/modules/savings/savings_binding.dart';
 import 'package:emon_mobile/app/modules/savings/savings_view.dart';
+import 'package:emon_mobile/app/modules/tax_estimates/tax_estimates_binding.dart';
 import 'package:emon_mobile/app/modules/tax_estimates/tax_estimates_view.dart';
+import 'package:emon_mobile/app/modules/accounts/accounts_binding.dart';
 import 'package:emon_mobile/app/modules/accounts/accounts_view.dart';
+import 'package:emon_mobile/app/modules/help/help_binding.dart';
 import 'package:emon_mobile/app/modules/help/help_view.dart';
 
 import '../modules/home/home_binding.dart';
@@ -76,12 +83,36 @@ class AppPages {
     GetPage(name: _Paths.NOTIFICATIONS, page: () => NotificationsView()),
     GetPage(name: _Paths.ALL_FEATURES, page: () => AllFeaturesView()),
     GetPage(name: _Paths.AI_CONSULTATION, page: () => AIConsultationView()),
-    GetPage(name: _Paths.INVOICES, page: () => InvoicesView()),
-    GetPage(name: _Paths.BILLS, page: () => BillsView()),
-    GetPage(name: _Paths.BUDGETS, page: () => BudgetsView()),
-    GetPage(name: _Paths.SAVINGS, page: () => SavingsView()),
-    GetPage(name: _Paths.TAX_ESTIMATES, page: () => TaxEstimatesView()),
-    GetPage(name: _Paths.ACCOUNTS, page: () => AccountsView()),
-    GetPage(name: _Paths.HELP, page: () => HelpView()),
+    GetPage(
+      name: _Paths.INVOICES,
+      page: () => InvoicesView(),
+      binding: InvoicesBinding(),
+    ),
+    GetPage(
+      name: _Paths.BILLS,
+      page: () => BillsView(),
+      binding: BillsBinding(),
+    ),
+    GetPage(
+      name: _Paths.BUDGETS,
+      page: () => BudgetsView(),
+      binding: BudgetsBinding(),
+    ),
+    GetPage(
+      name: _Paths.SAVINGS,
+      page: () => SavingsView(),
+      binding: SavingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.TAX_ESTIMATES,
+      page: () => TaxEstimatesView(),
+      binding: TaxEstimatesBinding(),
+    ),
+    GetPage(
+      name: _Paths.ACCOUNTS,
+      page: () => AccountsView(),
+      binding: AccountsBinding(),
+    ),
+    GetPage(name: _Paths.HELP, page: () => HelpView(), binding: HelpBinding()),
   ];
 }

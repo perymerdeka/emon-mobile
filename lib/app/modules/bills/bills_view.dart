@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:emon_mobile/app/routes/app_pages.dart';
 
 class BillsView extends StatelessWidget {
   @override
