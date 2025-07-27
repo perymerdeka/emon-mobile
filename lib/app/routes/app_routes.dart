@@ -15,6 +15,13 @@ abstract class Routes {
   static const NOTIFICATIONS = _Paths.NOTIFICATIONS;
   static const ALL_FEATURES = _Paths.ALL_FEATURES;
   static const AI_CONSULTATION = _Paths.AI_CONSULTATION;
+  static const INVOICES = _Paths.INVOICES;
+  static const BILLS = _Paths.BILLS;
+  static const BUDGETS = _Paths.BUDGETS;
+  static const SAVINGS = _Paths.SAVINGS;
+  static const TAX_ESTIMATES = _Paths.TAX_ESTIMATES;
+  static const ACCOUNTS = _Paths.ACCOUNTS;
+  static const HELP = _Paths.HELP;
 }
 
 abstract class _Paths {
@@ -31,4 +38,11 @@ abstract class _Paths {
   static const NOTIFICATIONS = '/notifications';
   static const ALL_FEATURES = '/all-features';
   static const AI_CONSULTATION = '/ai-consultation';
+  static const INVOICES = '/invoices';
+  static const BILLS = '/bills';
+  static const BUDGETS = '/budgets';
+  static const SAVINGS = '/savings';
+  static const TAX_ESTIMATES = '/tax-estimates';
+  static const ACCOUNTS = '/accounts';
+  static const HELP = '/help';
 }

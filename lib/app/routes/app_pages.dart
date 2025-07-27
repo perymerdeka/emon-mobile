@@ -17,6 +17,13 @@ import 'package:emon_mobile/app/modules/login/forgot_password_view.dart';
 import 'package:emon_mobile/app/modules/notifications/notifications_view.dart';
 import 'package:emon_mobile/app/modules/all_features/all_features_view.dart';
 import 'package:emon_mobile/app/modules/ai_consultation/ai_consultation_view.dart';
+import 'package:emon_mobile/app/modules/invoices/invoices_view.dart';
+import 'package:emon_mobile/app/modules/bills/bills_view.dart';
+import 'package:emon_mobile/app/modules/budgets/budgets_view.dart';
+import 'package:emon_mobile/app/modules/savings/savings_view.dart';
+import 'package:emon_mobile/app/modules/tax_estimates/tax_estimates_view.dart';
+import 'package:emon_mobile/app/modules/accounts/accounts_view.dart';
+import 'package:emon_mobile/app/modules/help/help_view.dart';
 
 import '../modules/home/home_binding.dart';
 import '../modules/home/home_view.dart';
@@ -69,5 +76,12 @@ class AppPages {
     GetPage(name: _Paths.NOTIFICATIONS, page: () => NotificationsView()),
     GetPage(name: _Paths.ALL_FEATURES, page: () => AllFeaturesView()),
     GetPage(name: _Paths.AI_CONSULTATION, page: () => AIConsultationView()),
+    GetPage(name: _Paths.INVOICES, page: () => InvoicesView()),
+    GetPage(name: _Paths.BILLS, page: () => BillsView()),
+    GetPage(name: _Paths.BUDGETS, page: () => BudgetsView()),
+    GetPage(name: _Paths.SAVINGS, page: () => SavingsView()),
+    GetPage(name: _Paths.TAX_ESTIMATES, page: () => TaxEstimatesView()),
+    GetPage(name: _Paths.ACCOUNTS, page: () => AccountsView()),
+    GetPage(name: _Paths.HELP, page: () => HelpView()),
   ];
 }

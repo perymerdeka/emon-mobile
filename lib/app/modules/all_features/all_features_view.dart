@@ -260,19 +260,19 @@ Widget _featureCard(_FeatureItem f, Size size) {
           Get.toNamed(Routes.TRANSACTIONS);
           break;
         case 'Invoices':
-          _showFeatureComingSoon('Invoices', 'Create and send professional invoices');
+          Get.toNamed(Routes.INVOICES);
           break;
         case 'Bills':
-          _showFeatureComingSoon('Bills', 'Manage and pay your bills on time');
+          Get.toNamed(Routes.BILLS);
           break;
         case 'Budget Plans':
-          _showFeatureComingSoon('Budget Plans', 'Create budgets to manage your spending');
+          Get.toNamed(Routes.BUDGETS);
           break;
         case 'Savings Goals':
-          _showFeatureComingSoon('Savings Goals', 'Set and track your financial goals');
+          Get.toNamed(Routes.SAVINGS);
           break;
         case 'Tax Estimates':
-          _showFeatureComingSoon('Tax Estimates', 'Estimate your freelance tax obligations');
+          Get.toNamed(Routes.TAX_ESTIMATES);
           break;
         case 'Expense Reports':
           Get.toNamed(Routes.REPORTS);
@@ -281,10 +281,10 @@ Widget _featureCard(_FeatureItem f, Size size) {
           Get.toNamed(Routes.PROFILE);
           break;
         case 'Accounts':
-          _showFeatureComingSoon('Accounts', 'Manage your connected bank accounts');
+          Get.toNamed(Routes.ACCOUNTS);
           break;
         case 'Help Center':
-          _showFeatureComingSoon('Help Center', 'Get support and find answers');
+          Get.toNamed(Routes.HELP);
           break;
       }
     },
@@ -363,89 +363,4 @@ class _FeatureItem {
   _FeatureItem(this.label, this.icon, this.color, this.description);
 }
 
-void _showFeatureComingSoon(String featureName, String description) {
-  Get.dialog(
-    AlertDialog(
-      title: Row(
-        children: [
-          Icon(
-            Icons.construction,
-            color: Color(0xFFFF9800),
-            size: 28,
-          ),
-          SizedBox(width: 12),
-          Text(
-            'Coming Soon!',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF181F2B),
-            ),
-          ),
-        ],
-      ),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            featureName,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF181F2B),
-            ),
-          ),
-          SizedBox(height: 8),
-          Text(
-            description,
-            style: TextStyle(
-              fontSize: 14,
-              color: Color(0xFF8A94A6),
-            ),
-          ),
-          SizedBox(height: 16),
-          Container(
-            padding: EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: Color(0xFFFFF3E0),
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Color(0xFFFF9800).withOpacity(0.3)),
-            ),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.info_outline,
-                  color: Color(0xFFFF9800),
-                  size: 20,
-                ),
-                SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    'This feature is currently under development and will be available soon!',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Color(0xFFE65100),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-      actions: [
-        TextButton(
-          onPressed: () => Get.back(),
-          child: Text(
-            'OK',
-            style: TextStyle(
-              color: Color(0xFF2196F3),
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
+
