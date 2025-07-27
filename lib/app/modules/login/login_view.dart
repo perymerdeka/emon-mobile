@@ -142,10 +142,11 @@ class LoginView extends GetView<LoginController> {
                               emailError.value = '';
                               passwordError.value = '';
                               if (formKey.currentState!.validate()) {
-                                controller.login(
-                                  emailController.text,
+                                controller.updateEmail(emailController.text);
+                                controller.updatePassword(
                                   passwordController.text,
                                 );
+                                controller.login();
                               }
                             },
                             style: ElevatedButton.styleFrom(

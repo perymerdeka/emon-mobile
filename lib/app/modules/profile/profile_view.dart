@@ -47,7 +47,7 @@ class ProfileView extends GetView<ProfileController> {
                         CircleAvatar(
                           radius: 56,
                           backgroundColor: Color(0xFFFFE5E5),
-                          backgroundImage: AssetImage(controller.avatar.value),
+                          backgroundImage: AssetImage(controller.userAvatar),
                         ),
                         Positioned(
                           bottom: 6,
@@ -70,7 +70,7 @@ class ProfileView extends GetView<ProfileController> {
                     SizedBox(height: 18),
                     Obx(
                       () => Text(
-                        controller.name.value,
+                        controller.userName,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 26,
@@ -80,7 +80,7 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                     Obx(
                       () => Text(
-                        controller.email.value,
+                        controller.userEmail,
                         style: TextStyle(
                           fontSize: 16,
                           color: Color(0xFF8A94A6),
@@ -405,10 +405,7 @@ void _showChangePasswordDialog() {
         ],
       ),
       actions: [
-        TextButton(
-          onPressed: () => Get.back(),
-          child: Text('Cancel'),
-        ),
+        TextButton(onPressed: () => Get.back(), child: Text('Cancel')),
         ElevatedButton(
           onPressed: () {
             // TODO: Implement password change functionality

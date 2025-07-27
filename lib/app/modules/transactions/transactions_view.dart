@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'transactions_controller.dart';
 import 'package:emon_mobile/app/routes/app_pages.dart';
+import '../../data/models/transaction_model.dart';
+import '../../data/models/category_model.dart';
 
 class TransactionsView extends GetView<TransactionsController> {
   @override
@@ -239,8 +241,8 @@ void _showTypeFilter() {
   );
 }
 
-void _showTransactionDetails(Map tx) {
-  final isIncome = (tx['type'] == 'income');
+void _showTransactionDetails(Transaction tx) {
+  final isIncome = (tx.type == CategoryType.income);
   Get.bottomSheet(
     Container(
       padding: EdgeInsets.all(20),
@@ -272,7 +274,7 @@ void _showTransactionDetails(Map tx) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      tx['title'],
+                      tx.description ?? 'No description',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -280,7 +282,7 @@ void _showTransactionDetails(Map tx) {
                       ),
                     ),
                     Text(
-                      tx['date'],
+                      '${tx.date.day}/${tx.date.month}/${tx.date.year}',
                       style: TextStyle(fontSize: 14, color: Color(0xFF8A94A6)),
                     ),
                   ],
@@ -298,7 +300,7 @@ void _showTransactionDetails(Map tx) {
               ),
               Text(
                 (isIncome ? '' : '-') +
-                    ' ${tx['amount'].abs().toStringAsFixed(2)}',
+                    ' ${tx.amount.abs().toStringAsFixed(2)}',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -357,8 +359,8 @@ void _showTransactionDetails(Map tx) {
   );
 }
 
-Widget _transactionCard(Map tx, Size size) {
-  final isIncome = (tx['type'] == 'income');
+Widget _transactionCard(Transaction tx, Size size) {
+  final isIncome = (tx.type == CategoryType.income);
   return GestureDetector(
     onTap: () {
       _showTransactionDetails(tx);
@@ -393,7 +395,7 @@ Widget _transactionCard(Map tx, Size size) {
               children: [
                 Text(
                   (isIncome ? '' : '-') +
-                      ' ${tx['amount'].abs().toStringAsFixed(2)}',
+                      ' ${tx.amount.abs().toStringAsFixed(2)}',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -402,7 +404,7 @@ Widget _transactionCard(Map tx, Size size) {
                 ),
                 SizedBox(height: 2),
                 Text(
-                  tx['title'],
+                  tx.description ?? 'No description',
                   style: TextStyle(
                     fontSize: 16,
                     color: Color(0xFF8A94A6),
@@ -414,7 +416,7 @@ Widget _transactionCard(Map tx, Size size) {
           ),
           SizedBox(width: 8),
           Text(
-            tx['date'],
+            '${tx.date.day}/${tx.date.month}/${tx.date.year}',
             style: TextStyle(fontSize: 16, color: Color(0xFF8A94A6)),
           ),
         ],
